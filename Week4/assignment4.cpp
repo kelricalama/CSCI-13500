@@ -2,7 +2,6 @@
 #include <vector>
 #include <string>
 
-
 void removeCopies(std::vector<int>& data){
 
     if (data.empty())

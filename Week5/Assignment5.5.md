@@ -45,10 +45,24 @@ int main()
 ### Questions
 
 1. What is the output of this program?
+Inside addFive(): 15
+In main(): 10
+
 2. Why doesn't `value` change after calling `addFive()`?
+'value' does not change after calling 'addFive()' because the function only gets a copy of the value. The variable number is separate from value so changing number does not affect the original variable.
+
 3. Where does the variable `number` exist?
+The variable 'number' only exists inside the addFive() function.
+
 4. Draw the call stack while `addFive()` is executing.
+addFive()
+number = 15
+
+main()
+value = 10
+
 5. What happens to `number` after the function returns?
+'number' is removed from memory. The value stored in 'number' is gone.
 
 ---
 
@@ -81,10 +95,26 @@ int main()
 ### Questions
 
 1. What is the output of this program?
+Inside investigate(): 15 5
+15 5
+
 2. Why does `score` change while `bonus` does not?
+'score' changes because 'suspect' is a reference to 'score'. Changing 'suspect' changes the original value. Meanwhile, 'bonus' does not change because 'clue' is a constant reference which cannot be changed.
+
 3. Why is `clue` declared as a `const` reference?
+'clue' is declared as a 'const' reference so the function can use the value without making a copy.
+
 4. What would happen if the function attempted to modify `clue`?
+The program would give an error because 'clue' is read only. A 'const' reference cannot be changed.
+
 5. Draw the call stack while `investigate()` is executing.
+investigate()
+suspect = 15
+clue = 5
+
+main()
+score = 15
+bonus = 5
 
 ---
 
@@ -116,11 +146,26 @@ int main()
 ### Questions
 
 1. What is the output of this program?
+14
+
 2. Why do we pass `&clue` instead of `clue`?
+We pass '&clue' instead of 'clue' because it gives the function the address of clue so it can change the original value.
+
 3. What does `*evidence` do?
+'*evidence' accesses the value stored at that address. It changes the original clue value.
+
 4. Why is the `nullptr` check important?
+It is important because it checks that the pointer is valid before using it.
+
 5. What would happen if the function was called as `investigate(nullptr);`?
+Nothing will happen because the 'if' statement stops the code from using an empty pointer.
+
 6. Draw the call stack while `investigate()` is executing.
+investigate()
+evidence -> clue
+
+main()
+clue = 7
 
 ---
 
@@ -165,14 +210,48 @@ int main()
 ### Questions
 
 1. Predict the output of the program.
+29
+
 2. Draw the call stack after each function call.
+After mysteryA(value):
+mysteryA()
+x = 15
+
+main()
+value = 5
+
+After mysteryB(value):
+mysteryB()
+y = 30
+
+main()
+value = 30
+
+After mysteryC(&value):
+mysteryC()
+z -> value
+
+main()
+value = 29
+
 3. Which function uses:
    - Pass by Copy?
+   mysteryA(int x)
+
    - Pass by Reference?
+   mysteryB(int& y)
+
    - Pass by Pointer?
+   mysteryC(int* z)
+
 4. Which functions modify the original variable?
+mysteryB() and mysteryC() modify the original variable.
+
 5. Why does `mysteryA()` return a value, while `mysteryB()` and `mysteryC()` do not?
+'mysteryA()' returns a value because it changes a copy. 'mysteryB()' and 'mysteryC()' do not because they already change the original variable directly.
+
 6. Which approach would you choose if your goal was to modify the original variable? Explain your reasoning.
+I would choose pass by reference because it is simpler and safer than using pointers. It lets the function change the original variable without needing addresses or pointer checks.
 
 ---
 
@@ -181,7 +260,16 @@ int main()
 Answer the following questions in complete sentences.
 
 1. What is the difference between passing a variable by copy, by reference, and by pointer?
+Passing by copy makes a new copy of the variable. Passing by reference uses the original variable. Passing by pointer uses the variable’s memory address.
+
 2. When would you choose to use a reference instead of a pointer?
+I would use a reference when I want to change the original value and the variable will always exist.
+
 3. Why might a function accept a pointer instead of a reference?
+A function might accept a pointer instead of a reference if the value can be empty or nullptr.
+
 4. What role does the `const` keyword play when working with references and pointers?
+'const' stops the value from being changed when working with references and pointers.
+
 5. How does understanding the call stack help explain why variables change—or do not change—during function calls?
+The call stack shows where variables are stored and helps explain why some changes affect the original variable and some do not.

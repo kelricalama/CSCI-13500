@@ -9,5 +9,5 @@
  
 int RollDice() {
     // TODO: replace this placeholder
-    return 0;
+    return rand() % 6 + 1;
 }

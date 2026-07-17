@@ -40,6 +40,7 @@ int main(){
     return 0;
 }
 
+// display welcome message
 void welcomeMessage() {
     std::cout << "Welcome to the Rock Paper Scissors Game!" << std::endl;
 }
@@ -64,70 +65,51 @@ std::string getBotChoice() {
     // generate bot input 
     int botMove = rand() % 3;
 
-    if (bot_move == 0){
-        bot_pick = "rock";
+    if (botMove == 0){
+        return "rock";
     }
-    else if (bot_move == 1){
-        bot_pick = "paper";
+    else if (botMove == 1){
+        return "paper";
     }
     else {
-        bot_pick = "scissor";
+        return "scissor";
     }
 }
 
-
-        if (player_move != "rock" && player_move != "paper" && player_move != "scissor") {
-            std::cout << "Invalid move! Choose rock, paper, or scissor." << std::endl;
-            rounds--;
-            continue;
-        }
-
-        // generate bot input 
-        bot_move = rand() % 3;
-
-        if (bot_move == 0){
-            bot_pick = "rock";
-        }
-        else if (bot_move == 1){
-            bot_pick = "paper";
-        }
-        else {
-            bot_pick = "scissor";
-        }
-
-        std::cout << "Bot picked: " << bot_pick << std::endl;
-
-        // figure out the score 
-        if (player_move == bot_pick){
-            std::cout << "Tie. Let's try again!" << std::endl;
-            rounds--;
-        }
-        else if (player_move == "rock" && bot_pick == "scissor"){
-            player_score++;
-            std::cout << "You win this round!" << std::endl;
-        }
-        else if (player_move == "paper" && bot_pick == "rock"){
-            player_score++;
-            std::cout << "You win this round!" << std::endl;
-        }
-        else if (player_move == "scissor" && bot_pick == "paper"){
-            player_score++;
-            std::cout << "You win this round!" << std::endl;
-        }
-        else {
-            bot_score++;
-            std::cout << "Oops, you lost this round!" << std::endl;
-        }
-
-        std::cout << "Score: " << player_score << "-" << bot_score << std::endl;
+void playRound(std::string playerMove, std::string botMove, int &playerScore, int &botScore) {
+    std::cout << "Bot picked: " << botMove << std::endl;
+    
+    // figure out the score 
+    if (playerMove == botMove) {
+    std::cout << "Tie. Let's try again!" << std::endl;
     }
 
+    else if (playerMove == "rock" && botMove == "scissor"){
+        playerScore++;
+        std::cout << "You win this round!" << std::endl;
+    }
+    else if (playerMove == "paper" && botMove == "rock"){
+        playerScore++;
+        std::cout << "You win this round!" << std::endl;
+    }
+    else if (playerMove == "scissor" && botMove == "paper"){
+        playerScore++;
+        std::cout << "You win this round!" << std::endl;
+    }
+    else {
+        botScore++;
+        std::cout << "Oops, you lost this round!" << std::endl;
+    }
+    
+    std::cout << "Score: " << playerScore << "-" << botScore << std::endl;
+}
 
-    // Declare winner or tie
-    if (player_score > bot_score){
+// Declare winner or tie
+void displayWinner(int playerScore, int botScore) {
+    if (playerScore > botScore){
         std::cout << "Player wins!" << std::endl;
     }
-    else if (bot_score > player_score){
+    else if (botScore > playerScore){
         std::cout << "Bot wins!" << std::endl;
     }
     else {

@@ -1,1 +1,40 @@
+// Design Documentation File
 
+LinkedList(): O(1)
+This is because it only sets head_ to nullptr and size_ to 0. It does not go through the list, so it always takes the same amount of time.
+
+~LinkedList(): O(n)
+This is because it has to go through every node in the linked list and delete it. The more nodes there are, the longer it takes.
+
+InsertNode(): O(n)
+This is because it starts at the beginning of the list and moves to the last node before adding the new one. If the list is long, it takes more time.
+
+InsertNodeFront(): O(1)
+This is because it adds the new node at the front of the list. It only changes the head_ pointer and does not go through the list.
+
+Contains(): O(n)
+This is because it checks each node one by one until it finds the value or reaches the end of the list.
+
+Remove(): O(n)
+This is because it may have to move through the list to find the node that needs to be removed. In the worst case, it checks almost every node.
+
+PrintValues(): O(n)
+This is because it goes through the whole list and prints the value of each node.
+
+PrintAddresses(): O(n)
+This is because it visits every node to print its position and memory address.
+
+GetValueAtPosition(): O(n)
+This is because it moves through the list until it reaches the position the user asked for.
+
+ReverseList(): O(n)
+This is because it goes through every node one time to reverse the links between them.
+
+InsertNodeAt(): O(n)
+This is because it has to move through the list to reach the correct position before inserting the new node.
+
+GetSize(): O(1)
+This is because it only returns the value of size_. It does not go through the list.
+
+MergeIntertwine(): O(n + m)
+This is because it goes through both linked lists one time while adding their values to a new list. Here, n is the number of nodes in the first list and m is the number of nodes in the second list.

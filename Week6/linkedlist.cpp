@@ -67,7 +67,6 @@ bool LinkedList::Remove(const int position) {
         return true;
     }
 
-    // Move to the node before the one we want to remove
     Node* current = head_;
     for (int i = 1; i < position - 1; i++) {
         current = current->next;

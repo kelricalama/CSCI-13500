@@ -24,18 +24,18 @@ int main() {
 
     while (inputFile >> word) {
         if (word == searchWord) {
-            outputFile << replacementWord;
+            outputFile << replacementWord << " ";
             count++;
         }
         else {
-            outputFile << word;
+            outputFile << word << " ";
         }
     }
 
     inputFile.close();
     outputFile.close();
 
-    std::cout << "The word" << searchWord << "was found" << count << " times." << std::endl;
+    std::cout << "The word " << searchWord << " was found " << count << " times." << std::endl;
     std::cout << "The modified text has been saved to output.txt." << std::endl;
 
     return 0;
